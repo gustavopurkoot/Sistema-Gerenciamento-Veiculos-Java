@@ -1,0 +1,23 @@
+# Compilados Java
+*.class
+*.jar
+
+# Pasta de build
+bin/
+out/
+build/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Mac
+.DS_Store
