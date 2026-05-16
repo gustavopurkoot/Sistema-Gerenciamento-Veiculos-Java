@@ -53,6 +53,6 @@ public class Carro {
         System.out.println("Marca: " + marca);
         System.out.println("Modelo: " + modelo);
         System.out.println("Ano: " + ano);
-        System.out.println("Dono: " + dono.getNome() + "- CPF: " + dono.getCPF());
+        System.out.println("Dono: " + dono.getNome() + " - CPF: " + dono.getCPF());
     }
 }

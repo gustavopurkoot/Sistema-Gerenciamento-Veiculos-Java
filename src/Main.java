@@ -42,20 +42,14 @@ public class Main {
                     System.out.println("Digite o CPF do dono do carro: ");
                     String cpfDono = scanner.nextLine();
 
-
                     Dono dono = new Dono(nomeDono, cpfDono);
                     Carro novo = new Carro(marca, modelo, ano, dono);
 
-                    if (!novo.setAno(ano)) {
-                        System.out.println("Carro não cadastrado devido ao ano inválido.");
-                        break;
-                    }
-                    
-                    if (cpfDono.length() != 11){
+                    if (cpfDono.length() != 11) {
                         System.out.println("Carro não cadastrado devido ao CPF inválido.");
                         break;
                     }
-                        carros.add(novo);
+                    carros.add(novo);
 
                     System.out.println("\nCarro cadastrado!");
                     break;
@@ -68,15 +62,14 @@ public class Main {
                         int escolha = scanner.nextInt();
                         scanner.nextLine();
 
-                            if (escolha == 1){
-                                for(int i = 0; i < carros.size(); i++){
-                                    System.out.println("Carro #" + (i + 1) + ":");
-                                    carros.get(i).status();
-                                }
+                        if (escolha == 1) {
+                            for (int i = 0; i < carros.size(); i++) {
+                                System.out.println("Carro #" + (i + 1) + ":");
+                                carros.get(i).status();
+                            }
                             System.out.println("-----------------------------");
-                        
-                    }
-                        else if(escolha == 2){
+
+                        } else if (escolha == 2) {
                             System.out.println("Digite a marca que deseja listar: ");
                             String marcaListar = scanner.nextLine();
                             boolean encontrado = false;
@@ -91,8 +84,7 @@ public class Main {
                             if (!encontrado) {
                                 System.out.println("Nenhum carro encontrado para a marca informada.");
                             }
-                        }
-                        else {
+                        } else {
                             System.out.println("Opção inválida!");
                         }
                     }
