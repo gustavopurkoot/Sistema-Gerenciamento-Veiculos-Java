@@ -4,7 +4,7 @@ public class Dono {
 
     public Dono(String nome, String CPF) {
         this.nome = nome;
-        this.CPF = CPF;
+        setCPF(CPF);
     }
 
     public String getNome() {
@@ -20,6 +20,11 @@ public class Dono {
     }
 
     public void setCPF(String cPF) {
+        if (cPF.length() != 11) {
+            System.out.println("CPF inválido!");
+            return;
+
+        }
         CPF = cPF;
     }
 

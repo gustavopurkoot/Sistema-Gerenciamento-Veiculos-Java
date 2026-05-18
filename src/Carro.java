@@ -1,58 +1,38 @@
-import java.time.Year;
+public class Carro extends Veiculo {
+    private int numeroDePortas;
+    private String cambio;
 
-public class Carro {
-    private String marca;
-    private String modelo;
-    private int ano;
-    private Dono dono;
-
-    public Carro(String marca, String modelo, int ano, Dono dono) {
-
-        this.marca = marca;
-        this.modelo = modelo;
-        this.dono = dono;
-
-        setAno(ano);
+    public Carro(String marca, String modelo, int ano, Dono dono,
+            int numeroDePortas, String cambio) {
+        super(marca, modelo, ano, dono);
+        this.numeroDePortas = numeroDePortas;
+        this.cambio = cambio;
     }
 
-    public String getMarca() {
-        return marca;
+    public int getNumeroDePortas() {
+        return numeroDePortas;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setNumeroDePortas(int numeroDePortas) {
+        this.numeroDePortas = numeroDePortas;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getCambio() {
+        return cambio;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setCambio(String cambio) {
+        this.cambio = cambio;
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public boolean setAno(int ano) {
-        if (ano < 1886 || ano > Year.now().getValue()) {
-            System.out.println("Ano inválido!");
-            return false;
-        } else {
-            this.ano = ano;
-            return true;
-        }
-    }
-
-    public Dono getDono() {
-    return dono;
-}
-
+    @Override
     public void status() {
-        System.out.println("Marca: " + marca);
-        System.out.println("Modelo: " + modelo);
-        System.out.println("Ano: " + ano);
-        System.out.println("Dono: " + dono.getNome() + " - CPF: " + dono.getCPF());
+        System.out.println("Tipo: Carro");
+        System.out.println("Marca: " + getMarca());
+        System.out.println("Modelo: " + getModelo());
+        System.out.println("Ano: " + getAno());
+        System.out.println("Portas: " + numeroDePortas);
+        System.out.println("Câmbio: " + cambio);
+        System.out.println("Dono: " + getDono().getNome() + " - CPF: " + getDono().getCPF());
     }
 }
