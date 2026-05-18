@@ -27,7 +27,7 @@ public class Main {
 
                 case 1:
 
-                    System.out.println("Digite o tipo do veículo (1 para Carro): ");
+                    System.out.println("Digite o tipo do veículo (1 para Carro ou 2 para Caminhão): ");
                     int tipoVeiculo = scanner.nextInt();
                     scanner.nextLine();
 
@@ -76,7 +76,34 @@ public class Main {
                         }
 
                         veiculos.add(carro);
+                    } else if (tipoVeiculo == 2) {
 
+                        System.out.println("Digite a capacidade de carga em toneladas: ");
+                        double capacidadeCarga = scanner.nextDouble();
+                        scanner.nextLine();
+
+                        System.out.println("Digite o número de eixos: ");
+                        int eixos = scanner.nextInt();
+                        scanner.nextLine();
+
+                        Caminhao caminhao = new Caminhao(marca, modelo, ano, dono, capacidadeCarga, eixos);
+
+                        if (caminhao.getAno() == 0) {
+                            System.out.println("Veículo não cadastrado devido ao ano inválido.");
+                            break;
+                        }
+
+                        if (caminhao.getCapacidadeCarga() == 0) {
+                            System.out.println("Veículo não cadastrado devido à capacidade de carga inválida.");
+                            break;
+                        }
+
+                        if (caminhao.getEixos() == 0) {
+                            System.out.println("Veículo não cadastrado devido ao número de eixos inválido.");
+                            break;
+                        }
+
+                        veiculos.add(caminhao);
                     } else {
                         System.out.println("Tipo de veículo inválido! Veículo não cadastrado.");
                         break;
@@ -143,6 +170,7 @@ public class Main {
                 case 4:
                     if (veiculos.isEmpty()){
                         System.out.println("Nenhum veiculo para atualizar.");
+                        break;
                     }
                     System.out.println("Digite o número do veículo que deseja atualizar: ");
                     int num = scanner.nextInt();
