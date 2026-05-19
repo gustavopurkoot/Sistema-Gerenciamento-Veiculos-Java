@@ -116,7 +116,8 @@ public class Main {
                     if (veiculos.isEmpty()) {
                         System.out.println("\nNenhum veículo cadastrado.");
                     } else {
-                        System.out.println("Digite 1 para listar todos os veículos ou 2 para listar por marca: ");
+                        System.out.println(
+                                "Digite 1 para listar todos os veículos, 2 para listar por marca ou 3 para listar por cpf: ");
                         int escolha = scanner.nextInt();
                         scanner.nextLine();
 
@@ -144,6 +145,22 @@ public class Main {
                             if (!encontrado) {
                                 System.out.println("Nenhum veículo encontrado para a marca informada.");
                             }
+                        } else if (escolha == 3) {
+                            System.out.println("Digite o CPF do dono que deseja listar: ");
+                            String cpflistar = scanner.nextLine();
+                            boolean encontradoCpf = false;
+
+                            for (Veiculo veiculo : veiculos) {
+                                if (veiculo.getDono().getCPF().equals(cpflistar)) {
+                                    veiculo.status();
+                                    System.out.println("-----------------------------");
+                                    encontradoCpf = true;
+                                }
+                            }
+                            if (!encontradoCpf) {
+                                System.out.println("Nenhum veículo encontrado para o CPF informado.");
+                            }
+
                         } else {
                             System.out.println("Opção inválida!");
                         }
@@ -151,7 +168,7 @@ public class Main {
                     break;
 
                 case 3:
-                    if(veiculos.isEmpty()){
+                    if (veiculos.isEmpty()) {
                         System.out.println("Nenhum veículo para remover.");
                         break;
                     }
@@ -168,7 +185,7 @@ public class Main {
                     break;
 
                 case 4:
-                    if (veiculos.isEmpty()){
+                    if (veiculos.isEmpty()) {
                         System.out.println("Nenhum veiculo para atualizar.");
                         break;
                     }
