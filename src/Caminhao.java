@@ -6,6 +6,8 @@ public class Caminhao extends Veiculo {
         super(marca, modelo, ano, dono);
         setCapacidadeCarga(capacidadeCarga);
         setEixos(eixos);
+
+        validarCargasEEixos();
     }
 
     public double getCapacidadeCarga() {
