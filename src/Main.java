@@ -273,6 +273,11 @@ public class Main {
                 System.out.println("Digite o novo número de portas (2 ou 4): ");
                 int novasPortas = scanner.nextInt();
                 scanner.nextLine();
+                
+                if (novasPortas != 2 && novasPortas != 4) {
+                    System.out.println("Número de portas inválido! Atualização cancelada.");
+                    return;
+                }
 
                 System.out.println("Digite o novo câmbio (Manual/Automático): ");
                 String novoCambio = scanner.nextLine();
