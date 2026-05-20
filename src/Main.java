@@ -272,6 +272,34 @@ public class Main {
             veiculoAtualizar.getDono().setNome(novoNomeDono);
             veiculoAtualizar.getDono().setCPF(novoCpfDono);
 
+            if (veiculoAtualizar instanceof Carro) {
+                Carro carro = (Carro) veiculoAtualizar;
+
+                System.out.println("Digite o novo número de portas (2 ou 4): ");
+                int novasPortas = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("Digite o novo câmbio (Manual/Automático): ");
+                String novoCambio = scanner.nextLine();
+
+                carro.setNumeroDePortas(novasPortas);
+                carro.setCambio(novoCambio);
+
+            } else if (veiculoAtualizar instanceof Caminhao) {
+                Caminhao caminhao = (Caminhao) veiculoAtualizar;
+
+                System.out.println("Digite a nova capacidade de carga em toneladas: ");
+                double novaCapacidade = scanner.nextDouble();
+                scanner.nextLine();
+
+                System.out.println("Digite o novo número de eixos: ");
+                int novosEixos = scanner.nextInt();
+                scanner.nextLine();
+
+                caminhao.setCapacidadeCarga(novaCapacidade);
+                caminhao.setEixos(novosEixos);
+            }
+
             System.out.println("Veículo atualizado!");
         }
 
