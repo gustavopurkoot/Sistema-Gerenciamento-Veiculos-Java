@@ -161,12 +161,7 @@ public class Main {
             scanner.nextLine();
 
             if (escolha == 1) {
-                for (int i = 0; i < veiculos.size(); i++) {
-                    System.out.println("Veículo #" + (i + 1) + ":");
-                    veiculos.get(i).status();
-                    System.out.println("-----------------------------");
-
-                }
+                listarTodosVeiculos(veiculos);
                 System.out.println("-----------------------------");
 
             } else if (escolha == 2) {
@@ -211,6 +206,9 @@ public class Main {
             System.out.println("Nenhum veículo para remover.");
             return;
         }
+
+        listarTodosVeiculos(veiculos);
+
         System.out.println("Digite o número do veículo que deseja remover: ");
         int numero = scanner.nextInt();
         scanner.nextLine();
@@ -228,6 +226,8 @@ public class Main {
             System.out.println("Nenhum veiculo para atualizar.");
             return;
         }
+        listarTodosVeiculos(veiculos);
+
         System.out.println("Digite o número do veículo que deseja atualizar: ");
         int num = scanner.nextInt();
         scanner.nextLine();
@@ -309,6 +309,15 @@ public class Main {
         } else {
             Collections.sort(veiculos, (v1, v2) -> v1.getAno() - v2.getAno());
             System.out.println("Veículos ordenados!");
+        }
+    }
+
+    private static void listarTodosVeiculos(ArrayList<Veiculo> veiculos) {
+        for (int i = 0; i < veiculos.size(); i++) {
+            System.out.println("Veículo #" + (i + 1) + ":");
+            veiculos.get(i).status();
+            System.out.println("-----------------------------");
+
         }
     }
 
