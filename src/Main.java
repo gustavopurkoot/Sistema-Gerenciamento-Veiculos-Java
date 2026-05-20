@@ -85,7 +85,6 @@ public class Main {
         if (cpfDono.length() != 11) {
             System.out.println("Veículo não cadastrado devido ao CPF inválido.");
             return;
-
         }
 
         Dono dono = new Dono(nomeDono, cpfDono);
@@ -149,7 +148,6 @@ public class Main {
         }
 
         System.out.println("\nVeículo cadastrado!");
-        return;
 
     }
 
@@ -206,7 +204,6 @@ public class Main {
                 System.out.println("Opção inválida!");
             }
         }
-        return;
     }
 
     private static void removerVeiculo(Scanner scanner, ArrayList<Veiculo> veiculos) {
@@ -224,8 +221,6 @@ public class Main {
         } else {
             System.out.println("Número inválido!");
         }
-        return;
-
     }
 
     private static void atualizarVeiculo(Scanner scanner, ArrayList<Veiculo> veiculos) {
@@ -306,7 +301,6 @@ public class Main {
         else {
             System.out.println("Número inválido!");
         }
-        return;
     }
 
     private static void ordenarVeiculosPorAno(ArrayList<Veiculo> veiculos) {
@@ -316,7 +310,6 @@ public class Main {
             Collections.sort(veiculos, (v1, v2) -> v1.getAno() - v2.getAno());
             System.out.println("Veículos ordenados!");
         }
-        return;
     }
 
 }
