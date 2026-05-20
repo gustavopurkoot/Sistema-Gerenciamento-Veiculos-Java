@@ -67,6 +67,10 @@ public class Main {
 
                         System.out.println("Digite o câmbio (Manual/Automático): ");
                         String cambio = scanner.nextLine();
+                        if(!cambio.equalsIgnoreCase("Manual") && !cambio.equalsIgnoreCase("Automático")) {
+                            System.out.println("Câmbio inválido! Veículo não cadastrado.");
+                            break;
+                        }
 
                         Carro carro = new Carro(marca, modelo, ano, dono, portas, cambio);
 
