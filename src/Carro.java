@@ -22,10 +22,13 @@ public class Carro extends Veiculo {
     }
 
     public void setCambio(String cambio) {
-         if (!cambio.equalsIgnoreCase("Manual") && !cambio.equalsIgnoreCase("Automático")) {
-                System.out.println("Câmbio inválido! Veículo não cadastrado.");
-                return;
+        if (!cambio.equalsIgnoreCase("Manual")
+                && !cambio.equalsIgnoreCase("Automático")
+                && !cambio.equalsIgnoreCase("Automatico")) {
+            System.out.println("Câmbio inválido! Veículo não cadastrado.");
+            return;
         }
+
         this.cambio = cambio;
     }
 
