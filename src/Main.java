@@ -1,13 +1,49 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
         ArrayList<Veiculo> veiculos = new ArrayList<>();
+        File arquivo = new File("veiculos.txt");
+
+        if (arquivo.exists()) {
+            Scanner leitor = new Scanner(arquivo);
+            while (leitor.hasNextLine()) {
+                String linha = leitor.nextLine();
+                String[] partes = linha.split(";");
+
+                String tipo = partes[0];
+                String marca = partes[1];
+                String modelo = partes[2];
+                int ano = Integer.parseInt(partes[3]);
+                String nomeDono = partes[4];
+                String cpfDono = partes[5];
+                Dono dono = new Dono(nomeDono, cpfDono);
+
+                if (tipo.equalsIgnoreCase("Carro")) {
+                    int portas = Integer.parseInt(partes[6]);
+                    String cambio = partes[7];
+                    Carro carro = new Carro(marca, modelo, ano, dono, portas, cambio);
+                    veiculos.add(carro);
+
+                } else if (tipo.equalsIgnoreCase("Caminhao")) {
+                    double capacidadeCarga = Double.parseDouble(partes[6]);
+                    int eixos = Integer.parseInt(partes[7]);
+                    Caminhao caminhao = new Caminhao(marca, modelo, ano, dono, capacidadeCarga, eixos);
+                    veiculos.add(caminhao);
+                }
+            }
+
+            leitor.close();
+        }
 
         do {
 
@@ -56,6 +92,41 @@ public class Main {
 
         } while (opcao != 0);
 
+        FileWriter writer = new FileWriter("veiculos.txt");
+
+        for (Veiculo veiculo : veiculos) {
+
+            if (veiculo instanceof Carro) {
+                Carro carro = (Carro) veiculo;
+
+                writer.write(
+                        "Carro;" +
+                                carro.getMarca() + ";" +
+                                carro.getModelo() + ";" +
+                                carro.getAno() + ";" +
+                                carro.getDono().getNome() + ";" +
+                                carro.getDono().getCPF() + ";" +
+                                carro.getNumeroDePortas() + ";" +
+                                carro.getCambio() + "\n");
+
+            } else if (veiculo instanceof Caminhao) {
+                Caminhao caminhao = (Caminhao) veiculo;
+
+                writer.write(
+                        "Caminhao;" +
+                                caminhao.getMarca() + ";" +
+                                caminhao.getModelo() + ";" +
+                                caminhao.getAno() + ";" +
+                                caminhao.getDono().getNome() + ";" +
+                                caminhao.getDono().getCPF() + ";" +
+                                caminhao.getCapacidadeCarga() + ";" +
+                                caminhao.getEixos() + "\n");
+            }
+        }
+
+        writer.close();
+        System.out.println("Veículos salvos no arquivo!");
+
         System.out.println("Programa encerrado!");
         scanner.close();
     }
@@ -101,7 +172,9 @@ public class Main {
 
             System.out.println("Digite o câmbio (Manual/Automático): ");
             String cambio = scanner.nextLine();
-            if (!cambio.equalsIgnoreCase("Manual") && !cambio.equalsIgnoreCase("Automático")) {
+            if (!cambio.equalsIgnoreCase("Manual")
+                    && !cambio.equalsIgnoreCase("Automático")
+                    && !cambio.equalsIgnoreCase("Automatico")) {
                 System.out.println("Câmbio inválido! Veículo não cadastrado.");
                 return;
             }
@@ -273,7 +346,7 @@ public class Main {
                 System.out.println("Digite o novo número de portas (2 ou 4): ");
                 int novasPortas = scanner.nextInt();
                 scanner.nextLine();
-                
+
                 if (novasPortas != 2 && novasPortas != 4) {
                     System.out.println("Número de portas inválido! Atualização cancelada.");
                     return;

@@ -21,3 +21,6 @@ build/
 
 # Mac
 .DS_Store
+
+# Arquivo de dados do sistema
+veiculos.txt
